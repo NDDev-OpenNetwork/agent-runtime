@@ -23,7 +23,7 @@ protocol, scheduler, or operating-system sandbox.
 Requires Go 1.25 or newer.
 
 ```sh
-go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.2.0
+go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.1.1
 agent-runtime task validate --manifest examples/basic/agent.json --workspace examples/basic
 agent-runtime task run --manifest examples/basic/agent.json --workspace examples/basic
 ```
@@ -84,33 +84,20 @@ The canonical distributable schema is
 
 ## Releases
 
-The project is released as a Go module/source product. It does not publish
-prebuilt platform binaries.
+A release is a tag. The Go module proxy serves the library the moment
+`vMAJOR.MINOR.PATCH` is pushed, records an immutable hash for it, and `go.sum`
+fails the build if that ever changes — so `go get` is the verification for the
+packages, with no further ceremony.
 
-The current release is `v0.2.0`. `v0.1.2` was the first published one.
-`v0.1.0` and `v0.1.1` were tagged but never published — the first pinned a Go
-toolchain below the module's own directive, the second read a repository setting
-its token cannot access, and both failed before building an asset. Those tags
-and their Go module proxy entries are immutable, so they are left in place
-carrying no release assets and no attestations. Use `v0.1.2` or later.
+The GitHub Release additionally carries `agent-runtime` CLI binaries for linux
+and darwin on both architectures, plus `SHA256SUMS`. Check a downloaded archive
+against that file before running it.
 
-`v0.2.0` breaks the manifest contract deliberately: a Task manifest that states
-a zero timeout, output or context bound is now refused rather than silently
-widened to a default. Manifests that omit a bound are unaffected.
+The current release is `v0.1.1`, and the line starts there: this module path is
+new, so numbering from the repository it grew out of does not carry over.
 
-Each tag-only release will contain one deterministic tracked-source archive, an
-SPDX 2.3 JSON SBOM, canonical release notes, a release manifest, and
-`SHA256SUMS`. The annotated signed tag identifies the exact `main` commit;
-each dry-run or publication build also emits a versioned machine-readable build
-result that binds its canonical artifact root, source and AGPL license inputs, and exact asset
-path/size/digest closure.
-GitHub OIDC/Sigstore attestations cover every material asset. See
-[`docs/releasing.md`](docs/releasing.md) for verification and rollback rules.
-The repository-owned [provenance contract](provenance/v1alpha1.json) separates
-owner SSH-signed source commits, GitHub OpenPGP-signed protected-main merge
-commits, and owner SSH-signed release tags. Its native verifier pins reviewed
-public trust bytes and exact PR, graph, workflow and check identities on both
-Linux and macOS without ambient GPG or Git trust configuration.
+See [`docs/releasing.md`](docs/releasing.md) for the steps and for why a tag is
+irreversible.
 
 ## Goal contract
 
