@@ -1,0 +1,67 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Actions are pinned to a commit, not a tag, so a moved tag cannot change what
+# runs here.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GOTOOLCHAIN: local
+
+jobs:
+  test:
+    name: Test
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.25.x'
+          cache: false
+
+      - run: go test -race ./...
+      - run: go vet ./...
+
+      - name: Static analysis
+        run: |
+          set -euo pipefail
+          go run honnef.co/go/tools/cmd/staticcheck@v0.7.0 ./...
+
+      - run: go build ./cmd/agent-runtime
+
+      # Every fuzz target in the contract is started for a bounded number of
+      # iterations. A target that stops existing, or a new one that is never
+      # registered, fails here rather than going unnoticed.
+      - name: Fuzz targets
+        run: go run ./cmd/check-fuzz
+
+      # The module claims to build for platforms this matrix does not run on;
+      # cold-compiling each one is the only thing that makes the claim true.
+      - name: Cold-compile every supported platform
+        run: go run ./cmd/check-cold-compile
+
+  vulnerabilities:
+    name: Vulnerabilities
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.25.x'
+          cache: false
+      - run: go run golang.org/x/vuln/cmd/govulncheck@v1.7.0 ./...

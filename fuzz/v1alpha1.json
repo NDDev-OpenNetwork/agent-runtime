@@ -1,0 +1,23 @@
+{
+  "schema_version": "v1alpha1",
+  "fuzztime": "100x",
+  "fuzzminimizetime": "10x",
+  "parallel": 1,
+  "timeout": "2m",
+  "max_corpus_files_per_target": 256,
+  "max_corpus_bytes_per_target": 1048576,
+  "targets": [
+    {
+      "package": "github.com/NDDev-OpenNetwork/agent-runtime",
+      "name": "FuzzDecodeTaskManifest"
+    },
+    {
+      "package": "github.com/NDDev-OpenNetwork/agent-runtime/observability",
+      "name": "FuzzEnvelopeUnmarshal"
+    },
+    {
+      "package": "github.com/NDDev-OpenNetwork/agent-runtime/observability",
+      "name": "FuzzRedactionNeverLeaksDeniedValue"
+    }
+  ]
+}
