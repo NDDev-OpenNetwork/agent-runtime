@@ -1,0 +1,68 @@
+schema_version: 1
+
+repository:
+  id: "repo_01M0EZ7TQ2V3D1DBBFM0RM0E13"
+  display_name: "agent-runtime"
+  roles: ["project", "module"]
+  lifecycle: "active"
+
+provider:
+  type: "github"
+  installation: "installation:github-opennetwork"
+  repository_id: 1335304680
+  owner: "NDDev-OpenNetwork"
+  name: "agent-runtime"
+
+classification:
+  portfolios: ["portfolio:opennetwork-projects"]
+  visibility_contract: "public"
+  data_classification: "public"
+
+product:
+  purpose: "Versioned Task, Goal and lifecycle observability contracts for agent runtimes."
+  capabilities:
+    - "Bounded Task manifests"
+    - "Durable Goal journals"
+    - "Typed lifecycle events"
+  entrypoints:
+    - change: "Task manifest and runner implementation"
+      path: "manifest.go"
+    - change: "Durable Goal journal"
+      path: "goal"
+    - change: "Lifecycle observability"
+      path: "observability"
+    - change: "Public schemas"
+      path: "schemas"
+
+policy:
+  profiles: ["repository-default", "public-module", "agent-runtime"]
+  rollout_ring: "standard"
+
+git:
+  default_branch: "main"
+  integration: "pull-request"
+  branch_model: "task-branches"
+  handoff_pr: "preferred"
+  cleanup: "merged-only"
+
+verification:
+  commands:
+    lint: ["go vet ./..."]
+    test: ["go test -race ./..."]
+    build: ["go build ./cmd/agent-runtime"]
+  required: ["lint", "test", "build"]
+
+agent:
+  context_profile: "project-default"
+  generated_agents: false
+  serena: {enabled: false, provenance_required: false}
+
+module:
+  contract: "public"
+  consumption: ["package", "git-submodule"]
+  compatibility: "semver"
+  pin_policy: "version-tag"
+  publication: {registry: "none", github_release: "required"}
+
+release:
+  mode: "bundle"

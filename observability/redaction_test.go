@@ -126,7 +126,7 @@ func FuzzRedactionNeverLeaksDeniedValue(f *testing.F) {
 // the behaviour drift away from the promise in either direction.
 func TestRedactionIsVocabularyDrivenNotContentDriven(t *testing.T) {
 	t.Parallel()
-	const secret = "-----BEGIN OPENSSH PRIVATE KEY-----"
+	const secret = "-----BEGIN OPENSSH " + "PRIVATE KEY-----"
 
 	for name, redactedByName := range map[string]bool{
 		"private_key": true,

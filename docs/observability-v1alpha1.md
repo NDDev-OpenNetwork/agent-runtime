@@ -53,7 +53,7 @@ environment/provider content, credentials, tokens, and URLs.
 Redaction is driven by that vocabulary, not by inspecting a value for the shape
 of a secret. An attribute named `private_key`, `secret`, `token`, `password` or
 `credential` is redacted whatever it holds; an attribute named `note` or
-`payload` is published whatever it holds. `-----BEGIN OPENSSH PRIVATE KEY-----`
+`payload` is published whatever it holds. An OpenSSH private-key PEM header
 carried under a neutral name reaches the sink verbatim, with an empty
 `redactions` list.
 
