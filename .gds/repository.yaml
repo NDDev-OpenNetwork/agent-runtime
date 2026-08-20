@@ -35,7 +35,7 @@ product:
       path: "schemas"
 
 policy:
-  profiles: ["repository-default", "public-module", "agent-runtime"]
+  profiles: ["repository-default", "public-module"]
   rollout_ring: "standard"
 
 git:
