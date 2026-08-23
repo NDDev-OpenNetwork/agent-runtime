@@ -25,7 +25,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        # docs/releasing.md builds linux/amd64, linux/arm64, darwin/amd64 and
+        # darwin/arm64. macos-latest is Apple Silicon, so these three cover every
+        # shipped combination except darwin/amd64, which needs macos-13 — the last
+        # Intel image, already announced for retirement.
+        #
+        # ubuntu-24.04-arm is a standard hosted runner and unmetered on public
+        # repositories, so linux/arm64 costs nothing to exercise natively rather
+        # than only cross-compiling it at release time.
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
