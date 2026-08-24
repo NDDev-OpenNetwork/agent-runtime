@@ -51,6 +51,7 @@ verification:
     test: ["go test -race ./..."]
     build: ["go build ./cmd/agent-runtime"]
   required: ["lint", "test", "build"]
+  required_contexts: ["Gate"]
 
 agent:
   context_profile: "project-default"
