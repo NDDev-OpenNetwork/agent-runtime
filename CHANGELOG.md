@@ -4,6 +4,11 @@ All notable changes are documented here. The project follows Semantic
 Versioning and uses an unstable `v1alpha1` manifest until its first stable
 contract.
 
+## [Unreleased]
+
+- Publish unsuccessful completed self-workflow attempts as unassigned,
+  repository-local CI evidence; preserve actual conclusions and exact attempts.
+
 ## [0.1.1] - 2026-08-16
 
 First release of `agent-runtime` as an open-source module under
