@@ -6,6 +6,9 @@ contract.
 
 ## [Unreleased]
 
+- Remove unused OpenPGP, YAML, system and crypto module requirements; retain
+  the dependencies used by schema tests and verification tools.
+
 - Publish unsuccessful completed self-workflow attempts as unassigned,
   repository-local CI evidence; preserve actual conclusions and exact attempts.
 
