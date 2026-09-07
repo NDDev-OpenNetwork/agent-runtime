@@ -234,3 +234,11 @@ contract changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 Licensed under the GNU Affero General Public License v3.0 only
 (`AGPL-3.0-only`).
+
+
+## CI feedback
+
+The CI feedback workflow reports unsuccessful completed self-workflow attempts
+as unassigned issues in this repository. It uses a pinned publisher and records
+actual job conclusions and attempt identity without executing source-run code.
+Issue publication does not launch a repair agent or authorize deployment.
