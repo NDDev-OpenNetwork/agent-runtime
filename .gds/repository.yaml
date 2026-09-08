@@ -35,7 +35,7 @@ product:
       path: "schemas"
 
 policy:
-  profiles: ["repository-default", "public-module"]
+  profiles: ["repository-default", "public-module", "continuous-development"]
   rollout_ring: "standard"
 
 git:
@@ -51,7 +51,7 @@ verification:
     test: ["go test -race ./..."]
     build: ["go build ./cmd/agent-runtime"]
   required: ["lint", "test", "build"]
-  required_contexts: ["Gate"]
+  required_contexts: []
 
 agent:
   context_profile: "project-default"

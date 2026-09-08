@@ -6,6 +6,9 @@ contract.
 
 ## [Unreleased]
 
+- Select continuous-development so ordinary merge does not wait on the
+  `Gate` GitHub required check; local `verification.required` stays.
+
 - Remove unused OpenPGP, YAML, system and crypto module requirements; retain
   the dependencies used by schema tests and verification tools.
 
