@@ -6,6 +6,10 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-13
+
+- Stamp downloaded release binaries with the exact release version; local source builds retain `dev`.
+
 - Select continuous-development so ordinary merge does not wait on the
   `Gate` GitHub required check; local `verification.required` stays.
 
