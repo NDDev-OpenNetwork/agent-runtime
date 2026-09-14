@@ -6,6 +6,12 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-09-15
+
+- Record extra-approval false on `main` so a later ruleset apply cannot default
+  the unattributed-agent gate back on. GitHub treats Cursor co-authors as
+  unattributed.
+
 ## [0.1.2] - 2026-09-13
 
 - Stamp downloaded release binaries with the exact release version; local source builds retain `dev`.
