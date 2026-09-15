@@ -6,6 +6,10 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-09-15
+
+- Pin reusable workflows to current module mains.
+
 ## [0.1.3] - 2026-09-15
 
 - Record extra-approval false on `main` so a later ruleset apply cannot default
