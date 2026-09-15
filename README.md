@@ -23,7 +23,7 @@ protocol, scheduler, or operating-system sandbox.
 Requires Go 1.25 or newer.
 
 ```sh
-go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.1.3
+go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.1.4
 agent-runtime task validate --manifest examples/basic/agent.json --workspace examples/basic
 agent-runtime task run --manifest examples/basic/agent.json --workspace examples/basic
 ```
@@ -93,7 +93,7 @@ The GitHub Release additionally carries `agent-runtime` CLI binaries for linux
 and darwin on both architectures, plus `SHA256SUMS`. Check a downloaded archive
 against that file before running it.
 
-The current release is `v0.1.3`; the line started at `v0.1.1`: this module path is
+The current release is `v0.1.4`; the line started at `v0.1.1`: this module path is
 new, so numbering from the repository it grew out of does not carry over.
 
 See [`docs/releasing.md`](docs/releasing.md) for the steps and for why a tag is
