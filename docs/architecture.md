@@ -64,9 +64,10 @@ and is not claimed by v0.
 
 The vulnerability scanner and the linter are pinned at the point they are
 invoked in `.github/workflows/ci.yml`, so there is one place to read and one
-place to change. CI disables automatic toolchain
-downloads with `GOTOOLCHAIN=local` and records both tool versions in the job
-summary.
+place to change. `cmd/check-staticcheck` refuses a drifted pin or a local Go
+toolchain whose export data the pinned Staticcheck cannot decode. CI disables
+automatic toolchain downloads with `GOTOOLCHAIN=local` and records both tool
+versions in the job summary.
 
 Closure is structurally distinct from an ordinary phase receipt. It records the
 achieved outcome, cleanup, typed remaining debt/risks, and canonical next work.
