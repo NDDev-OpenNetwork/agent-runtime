@@ -6,6 +6,8 @@ contract.
 
 ## [Unreleased]
 
+- Raise Staticcheck to v0.8.1 and probe it against the local Go toolchain so the gate can analyze Go 1.27 export data.
+
 ## [0.1.4] - 2026-09-15
 
 - Pin reusable workflows to current module mains.
