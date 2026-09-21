@@ -3,7 +3,7 @@
 Open an issue before substantial changes so scope and compatibility can be
 agreed. Security reports must follow `SECURITY.md`.
 
-Development requires Go 1.25 or newer. Before submitting a pull request, run:
+Development requires Go 1.26 or newer. Before submitting a pull request, run:
 
 ```sh
 go test -race ./...
