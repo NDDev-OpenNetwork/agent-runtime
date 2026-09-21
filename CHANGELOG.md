@@ -6,6 +6,12 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-09-21
+
+- Converge the ci-workflows callers on the signed 0.1.26 tag.
+- Raise the Go floor to 1.26 for `x/mod v0.41.0` and `x/text v0.42.0`, and
+  build release binaries with the same 1.27.x toolchain CI tests.
+
 ## [0.1.6] - 2026-09-21
 
 - Repoint ci-feedback publishing to the ci-workflows module home and converge

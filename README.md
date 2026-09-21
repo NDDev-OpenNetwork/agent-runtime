@@ -20,7 +20,7 @@ protocol, scheduler, or operating-system sandbox.
 
 ## Quick start
 
-Requires Go 1.25 or newer.
+Requires Go 1.26 or newer.
 
 ```sh
 go install github.com/NDDev-OpenNetwork/agent-runtime/cmd/agent-runtime@v0.1.4
