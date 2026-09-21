@@ -6,6 +6,12 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-09-21
+
+- Repoint ci-feedback publishing to the ci-workflows module home and converge
+  the ci-workflows callers on the signed 0.1.25 tag.
+
+
 ## [0.1.5] - 2026-09-16
 
 - Raise Staticcheck to v0.8.1 and probe it against the local Go toolchain so the gate can analyze Go 1.27 export data.
