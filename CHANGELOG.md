@@ -6,6 +6,11 @@ contract.
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-09-29
+
+- Correct the installation example and release guidance in the README. Runtime
+  implementation and public contracts are unchanged from 0.1.7.
+
 ## [0.1.7] - 2026-09-21
 
 - Converge the ci-workflows callers on the signed 0.1.26 tag.
